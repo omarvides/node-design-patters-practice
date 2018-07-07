@@ -19,8 +19,8 @@ class ConsumeUrls extends EventEmitter {
 
   consume() {
     this.endpoints.forEach((endpoint) => {
-      this.emit('request', endpoint);
       request.get(endpoint, (err, response, body) => {
+        this.emit('request', endpoint);
         if (err) {
           this.emit('error', err);
         }
